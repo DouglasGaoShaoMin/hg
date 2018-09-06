@@ -1,0 +1,33 @@
+2018-08-12 13:05:26 [ main:0:com.daq.moxa.MainClient.main(MainClient.java:29)] - [ INFO ] 扫描到:0个串口:[]
+2018-08-12 13:05:26 [ main:3:com.daq.moxa.MainClient.main(MainClient.java:31)] - [ INFO ] 开始读取串口配置文件!
+2018-08-12 13:05:26 [ main:12:com.daq.moxa.MainClient.main(MainClient.java:34)] - [ INFO ] 读取串口配置文件完成,开始打开串口!
+2018-08-12 13:05:26 [ main:12:com.daq.moxa.MainClient.main(MainClient.java:36)] - [ INFO ] 开始打开串口!
+2018-08-12 13:05:26 [ main:19:com.daq.moxa.MainClient.main(MainClient.java:38)] - [ INFO ] 串口启动成功,开始发送数据!
+2018-08-12 13:05:26 [ main:20:com.daq.moxa.MainClient.main(MainClient.java:41)] - [ INFO ] 读取命令发送配置文件!
+2018-08-12 13:05:26 [ main:23:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件0配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_F', address='40', function='3031', crc='370D', namecode='SVV0099', ramaddress=0, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-08-12 13:05:26 [ main:23:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件1配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_L', address='07', function='10', crc='268A', namecode='SVV0099', ramaddress=1, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-08-12 13:05:26 [ main:27:com.daq.moxa.MainClient.main(MainClient.java:43)] - [ INFO ] 读取配置文件引入全部完成!下面启动发数定时器!
+2018-08-12 13:05:26 [ main:28:com.daq.moxa.MainClient.main(MainClient.java:63)] - [ INFO ] 开始创建socket连接!
+2018-08-12 13:05:26 [ main:28:com.daq.moxa.MainClient.main(MainClient.java:66)] - [ INFO ] socket连接已创建!下面开始监听并根据请求返回数据!
+2018-09-06 17:07:14 [ main:0:com.daq.moxa.MainClient.main(MainClient.java:29)] - [ INFO ] 扫描到:0个串口:[]
+2018-09-06 17:07:14 [ main:3:com.daq.moxa.MainClient.main(MainClient.java:31)] - [ INFO ] 开始读取串口配置文件!
+2018-09-06 17:07:14 [ main:12:com.daq.moxa.MainClient.main(MainClient.java:34)] - [ INFO ] 读取串口配置文件完成,开始打开串口!
+2018-09-06 17:07:14 [ main:12:com.daq.moxa.MainClient.main(MainClient.java:36)] - [ INFO ] 开始打开串口!
+2018-09-06 17:07:14 [ main:17:com.daq.moxa.MainClient.main(MainClient.java:38)] - [ INFO ] 串口启动成功,开始发送数据!
+2018-09-06 17:07:14 [ main:17:com.daq.moxa.MainClient.main(MainClient.java:41)] - [ INFO ] 读取命令发送配置文件!
+2018-09-06 17:07:14 [ main:20:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件0配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_F', address='40', function='3031', crc='370D', namecode='SVV0099', ramaddress=11, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-09-06 17:07:14 [ main:21:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件1配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_L', address='07', function='10', crc='268A', namecode='SVV0099', ramaddress=1, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-09-06 17:07:14 [ main:24:com.daq.moxa.MainClient.main(MainClient.java:43)] - [ INFO ] 读取配置文件引入全部完成!下面启动发数定时器!
+2018-09-06 17:07:14 [ main:25:com.daq.moxa.MainClient.main(MainClient.java:63)] - [ INFO ] 开始创建socket连接!
+2018-09-06 17:07:14 [ main:26:com.daq.moxa.MainClient.main(MainClient.java:66)] - [ INFO ] socket连接已创建!下面开始监听并根据请求返回数据!
+2018-09-06 17:09:40 [ main:1:com.daq.moxa.MainClient.main(MainClient.java:29)] - [ INFO ] 扫描到:0个串口:[]
+2018-09-06 17:09:40 [ main:3:com.daq.moxa.MainClient.main(MainClient.java:31)] - [ INFO ] 开始读取串口配置文件!
+2018-09-06 17:09:40 [ main:13:com.daq.moxa.MainClient.main(MainClient.java:34)] - [ INFO ] 读取串口配置文件完成,开始打开串口!
+2018-09-06 17:09:40 [ main:13:com.daq.moxa.MainClient.main(MainClient.java:36)] - [ INFO ] 开始打开串口!
+2018-09-06 17:09:40 [ main:17:com.daq.moxa.MainClient.main(MainClient.java:38)] - [ INFO ] 串口启动成功,开始发送数据!
+2018-09-06 17:09:40 [ main:18:com.daq.moxa.MainClient.main(MainClient.java:41)] - [ INFO ] 读取命令发送配置文件!
+2018-09-06 17:09:40 [ main:20:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件0配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_F', address='40', function='3031', crc='370D', namecode='SVV0099', ramaddress=11, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-09-06 17:09:40 [ main:20:com.daq.until.ReadProperties.ReadCodeProperties(ReadProperties.java:86)] - [ INFO ] 读取配置文件1配置成功CodeProperties{code='403031524431370D', type='ChangHuiLK80', parsemethod='ParsingCode_CH_Modbus_L', address='07', function='10', crc='268A', namecode='SVV0099', ramaddress=1, range=30000.0, rangetype=65535.0, returncode='', returnlength=128}
+2018-09-06 17:09:40 [ main:24:com.daq.moxa.MainClient.main(MainClient.java:43)] - [ INFO ] 读取配置文件引入全部完成!下面启动发数定时器!
+2018-09-06 17:09:40 [ main:25:com.daq.moxa.MainClient.main(MainClient.java:63)] - [ INFO ] 开始创建socket连接!
+2018-09-06 17:09:40 [ main:25:com.daq.moxa.MainClient.main(MainClient.java:66)] - [ INFO ] socket连接已创建!下面开始监听并根据请求返回数据!
