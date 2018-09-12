@@ -5,7 +5,7 @@ import com.daq.modebusTCP.ModbusTCPServer;
 import com.daq.model.CodeProperties;
 import com.daq.model.MainProperties;
 import com.daq.serialException.TooManyListeners;
-import com.daq.task.SendCodeTimer;
+import com.daq.moxa.SendCodeTimerTest;
 import com.daq.until.ReadProperties;
 import gnu.io.SerialPort;
 
@@ -52,7 +52,7 @@ public class TestReport {
                 e1.printStackTrace();
             }
             System.out.println("启动定时发送器!");
-            timer.schedule(new SendCodeTimer(serialPortList.get(i), codePropertiesList), 3000);
+            timer.schedule(new SendCodeTimerTest(serialPortList.get(i), codePropertiesList), 3000);
             System.out.println("启动定时发送器完成!下面创建Socket连接");
         }
 /*        //--------------------------------ModbusTCP上传数据----------------------------------7
