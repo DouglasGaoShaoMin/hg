@@ -1,4 +1,4 @@
-package com.daq.task;
+package com.daq.moxa;
 
 import com.daq.serialException.ReadDataFromSerialPortFailure;
 import com.daq.serialException.SerialPortInputStreamCloseFailure;
@@ -9,24 +9,25 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * User: gaosm
  * Date: 2018/5/22
  * Time: 14:47
  */
-public class SerialListener implements SerialPortEventListener {
+public class SerialListenerTest implements SerialPortEventListener {
     public SerialPort serialPort;
     private long timeok = 0;
     //private DAQMessage daqMessage;
     StringBuffer completeCode = new StringBuffer();
+    private static final char[] HEX_CHAR = {'0', '1', '2', '3', '4', '5',
+                '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-    public SerialListener(SerialPort serialPort) {
+    public SerialListenerTest(SerialPort serialPort) {
         this.serialPort = serialPort;
     }
 
-    public SerialListener() {
+    public SerialListenerTest() {
     }
 
 /*    public SerialListener(SerialPort serialPort, DAQMessage daqMessage) {
@@ -58,7 +59,7 @@ public class SerialListener implements SerialPortEventListener {
             case SerialPortEvent.RI: // 5 振铃指示
                 System.out.println("振铃指示!");
             case SerialPortEvent.OUTPUT_BUFFER_EMPTY: // 2 输出缓冲区已清空
-                System.out.println("输出缓冲区已清空!");
+                //System.out.println("输出缓冲区已清空!");
                 break;
             case SerialPortEvent.DATA_AVAILABLE: // 1 串口存在可用数据
                 byte[] data = null;
@@ -69,27 +70,41 @@ public class SerialListener implements SerialPortEventListener {
                         data = SerialTool.readFromPort(serialPort);    //读取数据，存入字节数组
                         //自定义解析过程
                         if (data == null || data.length < 1) { //检查数据是否读取正确
+                            System.out.println("1");
                         } else {
+                            System.out.println("2");
+
                             if (timeok == 0) {
                                 timeok = System.currentTimeMillis();
                             }
+                            System.out.println("3");
+
                             //将获取到的数据进行转码并输出
                             long timejiange = System.currentTimeMillis() - timeok;
-                            if (timejiange <45) {
+                            System.out.println("timejiange"+timejiange);
+                           // if (timejiange <45) {
+                                //String bs = bytesToHexFun2(data);
+                               //completeCode.append(bs);
                                 for (int j = 0; j < data.length; j++) {
                                     //byte数组表示的字符串转换为16进制，
                                     completeCode.append(String.format("%02x", data[j]) + " ");
+                                    //completeCode.append(data[j]+ " ");
+
                                 }
                                 sendCanSave();
-                            } else {
-                                completeCode = new StringBuffer();
+                            //}
+                            /*else {
+                               // completeCode = new StringBuffer();
+                               // String bs = bytesToHexFun2(data);
+                               // completeCode.append(bs);
                                 for (int j = 0; j < data.length; j++) {
                                     //byte数组表示的字符串转换为16进制，
-                                    completeCode.append(String.format("%02x", data[j]) + " ");
+                                    //completeCode.append(String.format("%02x", data[j]) + " ");
+                                     completeCode.append(data[j]+ " ");
                                 }
 
                                 sendCanSave();
-                            }
+                            }*/
                             timeok = System.currentTimeMillis();
                         }
                     }
@@ -105,11 +120,73 @@ public class SerialListener implements SerialPortEventListener {
     }
 
     private void sendCanSave() {
-        if (completeCode.toString().replace(" ", "").length() >= DAQMessage.getDAQMessage().getReturnLength()) {
+        System.out.println("completeCode"+completeCode.toString());
+        
+/*        if (completeCode.toString().replace(" ", "").length() >= DAQMessage.getDAQMessage().getReturnLength()) {
             String canSave = completeCode.toString();
             DAQMessage.getDAQMessage().setFlag(true);
             DAQMessage.getDAQMessage().setMsg(canSave);
             completeCode = new StringBuffer();
+        }*/
+    }
+    /**
+     * 方法一：
+     * byte[] to hex string
+     *
+     * @param bytes
+     * @return
+     */
+    public static String bytesToHexFun1(byte[] bytes) {
+        // 一个byte为8位，可用两个十六进制位标识
+        char[] buf = new char[bytes.length * 2];
+        int a = 0;
+        int index = 0;
+        for(byte b : bytes) { // 使用除与取余进行转换
+            if(b < 0) {
+                a = 256 + b;
+            } else {
+                a = b;
+            }
+
+            buf[index++] = HEX_CHAR[a / 16];
+            buf[index++] = HEX_CHAR[a % 16];
         }
+
+        return new String(buf);
+    }
+
+    /**
+     * 方法二：
+     * byte[] to hex string
+     *
+     * @param bytes
+     * @return
+     */
+    public static String bytesToHexFun2(byte[] bytes) {
+        char[] buf = new char[bytes.length * 3];
+        int index = 0;
+        for(byte b : bytes) { // 利用位运算进行转换，可以看作方法一的变种
+            buf[index++] = HEX_CHAR[b >>> 4 & 0xf];
+            buf[index++] = HEX_CHAR[b & 0xf];
+            buf[index++]=' ';
+        }
+
+        return new String(buf);
+    }
+
+    /**
+     * 方法三：
+     * byte[] to hex string
+     *
+     * @param bytes
+     * @return
+     */
+    public static String bytesToHexFun3(byte[] bytes) {
+        StringBuilder buf = new StringBuilder(bytes.length * 2);
+        for(byte b : bytes) { // 使用String的format方法进行转换
+            buf.append(String.format("%02x", new Integer(b & 0xff)));
+        }
+
+        return buf.toString();
     }
 }

@@ -7,9 +7,10 @@ public class ZheDaZhongKongRbusCRC {
         //07 03 00 01 00 02
         /*        int crc = calcCrc16(new byte[] { 0x07,(byte)0x03,(byte)0x00,(byte)0x01, (byte) 0xff,(byte)0x00 });
         07 22 02 00 01 02 4f 51  查询ai通道 1个 02号位
-        07 10 02 00 01 02
+        07 10 02 00 01 02            06 14 00 00 82 98
         System.out.println(String.format("0x%04x", crc));*/
-        int str2 = calcCrc16(new byte[]{0x11, 0x10, 0x00,0x00});
+        //int str2 = calcCrc16(new byte[]{0x07, 0x14, 0x06,0x00});
+        int str2 = calcCrc16(new int[]{0x07, 0x14, 0x06,0x00,0x01,0x00,0xa0,0x97,0x38,0x00});
         System.out.println(String.format("0x%04x", str2));
     }
 
@@ -19,7 +20,7 @@ public class ZheDaZhongKongRbusCRC {
      * @param data 需要计算的数组
      * @return CRC16校验值
      */
-    public static int calcCrc16(byte[] data) {
+    public static int calcCrc16(int[] data) {
         return calcCrc16(data, (byte) 0, data.length);
     }
 
@@ -31,7 +32,7 @@ public class ZheDaZhongKongRbusCRC {
      * @param len    长度
      * @return CRC16校验值
      */
-    public static int calcCrc16(byte[] data, int offset, int len) {
+    public static int calcCrc16(int[] data, int offset, int len) {
         return calcCrc16(data, offset, len, (byte) 0x0000);
     }
 
@@ -44,7 +45,7 @@ public class ZheDaZhongKongRbusCRC {
      * @param preval 之前的校验值
      * @return CRC16校验值
      */
-    public static int calcCrc16(byte[] data, int offset, int len, int preval) {
+    public static int calcCrc16(int[] data, int offset, int len, int preval) {
         int ucCRCHi = (preval & 0xff00) >> 8;
         int ucCRCLo = preval & 0x00ff;
         int iIndex;

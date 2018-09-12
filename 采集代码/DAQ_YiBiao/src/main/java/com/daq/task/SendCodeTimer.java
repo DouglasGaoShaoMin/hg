@@ -56,6 +56,7 @@ public class SendCodeTimer extends TimerTask {
                 for (CodeProperties codeProperties : codePropertieslist) {
                     byte[] sendcode = TypeUntil.hexStringToBytes(codeProperties.getCode());
                     SerialTool.sendToPort(serialPort, sendcode);
+                    //System.out.println("codeProperties.getReturnlength()"+codeProperties.getReturnlength());
                     DAQMessage.getDAQMessage().setReturnLength(codeProperties.getReturnlength());
                     System.out.println(formatter.format(new Date()) + "发送指令:" + codeProperties.getCode());
                     //System.out.println("everySendTime:"+everySendTime);

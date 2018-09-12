@@ -1,4 +1,4 @@
-package com.daq.serialPort;
+package com.daq.moxa;
 
 import com.daq.model.MainProperties;
 import com.daq.serialException.*;
@@ -17,19 +17,19 @@ import java.util.TooManyListenersException;
  *
  * @author gao
  */
-public class SerialTool {
+public class SerialTool1 {
 
-    private static SerialTool serialTool = null;
+    private static SerialTool1 serialTool = null;
 
     static {
         //在该类被ClassLoader加载时就初始化一个SerialTool对象
         if (serialTool == null) {
-            serialTool = new SerialTool();
+            serialTool = new SerialTool1();
         }
     }
 
     //私有化SerialTool类的构造方法，不允许其他类生成SerialTool对象
-    private SerialTool() {
+    private SerialTool1() {
     }
 
     /**
@@ -37,9 +37,9 @@ public class SerialTool {
      *
      * @return serialTool
      */
-    public static SerialTool getSerialTool() {
+    public static SerialTool1 getSerialTool() {
         if (serialTool == null) {
-            serialTool = new SerialTool();
+            serialTool = new SerialTool1();
         }
         return serialTool;
     }
@@ -222,7 +222,7 @@ public class SerialTool {
             //设置发生错误事件
             port.notifyOnFramingError(true);
             //设置发送缓冲区为空事件
-            //port.notifyOnOutputEmpty(true);
+            port.notifyOnOutputEmpty(true);
             //设置发生奇偶校验错误事件
             port.notifyOnParityError(true);
             //设置响铃侦测事件
@@ -245,8 +245,8 @@ public class SerialTool {
         try {
             for (int i = 0; i < mainConfList.size(); i++) {
                 MainProperties mainConf = mainConfList.get(i);
-                //System.out.println("mainConf"+mainConf);
-                SerialPort port = SerialTool.openPort(mainConf.getPortcomcode(), mainConf.getiBaudRate(), mainConf.getiDataBit(), mainConf.getiStopBit(),mainConf.getsVerifyBit());
+                System.out.println("mainConf"+mainConf);
+                SerialPort port = SerialTool1.openPort(mainConf.getPortcomcode(), mainConf.getiBaudRate(), mainConf.getiDataBit(), mainConf.getiStopBit(),mainConf.getsVerifyBit());
                 serialPortList.add(port);
             }
         } catch (SerialPortParameterFailure serialPortParameterFailure) {
