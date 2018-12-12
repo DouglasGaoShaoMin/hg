@@ -36,14 +36,31 @@ public class Test {
         // Float f = Float.intBitsToFloat(l.intValue());
         // int i = Float.floatToIntBits(a);             //1267528.1f
         // System.out.println("fdate:"+f);
-        char a = 0x30;
+        /**
+         * 昌辉的LDR校验
+         */
+/*      char a = 0x30;
         char b = 0x33;
         char c = 0x52;
         char d = 0x44;
         int x = a ^ b ^ c ^ d;
        // System.out.println("a:" + a);
-        System.out.println("x:"+String.format("%02x",x) );
-/*        String s1 = "40 30 33 52 44 30 31 31 32 30 36 41 43 30 30 30 30 34 37 44 31 45 33 35 37 43 35 38 41 43 30 30 30 30 30 30 30 30 30 30 30 31 30 44 36 36 45 30 30 30 37 39 34 41 41 37 38 30 30 30 30 36 38 0d ";
+        System.out.println("x:"+String.format("%02x",x) );*/
+        String IEE754Str = "00F101A5";
+        Long a = Long.valueOf(IEE754Str, 16);
+        System.out.println("a:"+a);
+        Float f = Float.intBitsToFloat(a.intValue());
+        //double d = Double.longBitsToDouble(a.intValue());
+        System.out.println(f);
+        String hex="3f80000000000000";
+
+        Double  value=Double.longBitsToDouble(Long.valueOf(hex, 16));
+        float f1= (float)(value*1);
+
+        System.out.println("value:"+value*1000);
+        System.out.println("value:"+f1*1000);
+
+/*      String s1 = "40 30 33 52 44 30 31 31 32 30 36 41 43 30 30 30 30 34 37 44 31 45 33 35 37 43 35 38 41 43 30 30 30 30 30 30 30 30 30 30 30 31 30 44 36 36 45 30 30 30 37 39 34 41 41 37 38 30 30 30 30 36 38 0d ";
         s1 = s1.replaceAll(" ", "");
         System.out.println("s1:" + s1);
         StringBuffer sBuffer = new StringBuffer();
