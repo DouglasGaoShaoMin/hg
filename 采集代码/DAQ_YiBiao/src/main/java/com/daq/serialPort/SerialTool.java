@@ -52,7 +52,7 @@ public class SerialTool {
      */
     public static final ArrayList<String> findPort() {
 
-        //获得当前所有可用串口
+        //获得当前所有可用串口  enum
         Enumeration<CommPortIdentifier> portList = CommPortIdentifier.getPortIdentifiers();
 
         ArrayList<String> portNameList = new ArrayList<>();
